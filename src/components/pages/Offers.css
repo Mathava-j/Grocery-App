@@ -1,0 +1,142 @@
+.offers-page {
+  padding: 40px 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.offers-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2b2b2b;
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.offer-card {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.offer-card:hover {
+  transform: translateY(-4px);
+}
+
+.offer-card img {
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.offer-card h3 {
+  font-size: 18px;
+  margin: 12px 0 6px;
+  color: #0f172a;
+}
+
+.short-desc {
+  font-size: 14px;
+  color: #555;
+  min-height: 40px;
+}
+
+.view-btn {
+  margin-top: 10px;
+  background-color: #0d9488;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #0b7e76;
+}
+
+/* Modal styles */
+.offer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.offer-modal {
+  background: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.offer-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111;
+}
+
+.close-btn {
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+.offer-description {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.offer-benefits ul {
+  padding-left: 18px;
+  margin-top: 4px;
+}
+
+.offer-benefits li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.offer-terms, .offer-validity {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #555;
+}

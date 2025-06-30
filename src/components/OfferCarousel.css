@@ -1,0 +1,334 @@
+.offer-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.carousel-window {
+  flex: 1;
+  overflow: hidden;
+}
+
+.offer-carousel {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: calc(100% + 16px);
+}
+
+.offer-card {
+  flex: 0 0 calc(33.333% - 16px);
+  margin-right: 16px;
+  background: #f8f8f8;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.offer-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.offer-card p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.scroll-btn.left {
+  left: 8px;
+}
+
+.scroll-btn.right {
+  right: 8px;
+}
+
+.scroll-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot.active {
+  background-color: #667eea;
+  transform: scale(1.2);
+}
+
+.indicator-dot:hover {
+  background-color: #764ba2;
+}
+
+/* Auto-scroll animation effect */
+.offer-carousel-container:hover .offer-card {
+  animation-play-state: paused;
+}
+
+/* Modal Styles */
+.offer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.offer-modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.offer-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.offer-modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.offer-modal-content {
+  padding: 24px;
+}
+
+.offer-image-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.offer-image-section img {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.offer-details-section {
+  color: #333;
+}
+
+.offer-description {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.offer-benefits {
+  margin-bottom: 20px;
+}
+
+.offer-benefits h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.offer-benefits h3:before {
+  content: "✓";
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.offer-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offer-benefits li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.offer-benefits li:before {
+  content: "•";
+  color: #667eea;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+
+.offer-benefits li:last-child {
+  border-bottom: none;
+}
+
+.offer-terms {
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.offer-terms h3 {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.offer-terms h3:before {
+  content: "⚠";
+  margin-right: 8px;
+  color: #ffc107;
+}
+
+.offer-terms p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.offer-validity {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .offer-modal {
+    margin: 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .offer-modal-content {
+    padding: 16px;
+  }
+  
+  .offer-modal-header {
+    padding: 16px 20px;
+  }
+  
+  .offer-modal-header h2 {
+    font-size: 20px;
+  }
+  
+  .offer-image-section img {
+    height: 150px;
+  }
+  
+  .offer-description {
+    font-size: 16px;
+  }
+}

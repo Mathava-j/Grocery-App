@@ -1,0 +1,38 @@
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.sidebar-section {
+  margin-bottom: 25px;
+}
+
+.sidebar-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+.sidebar-section .icon {
+  margin-right: 6px;
+  color: #00b853;
+}
+
+.sidebar-section select {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+}
