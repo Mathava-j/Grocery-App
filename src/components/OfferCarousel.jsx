@@ -89,59 +89,48 @@ export default function OfferCarousel() {
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
-  // Auto-scroll functionality
+  // ✅ FIXED: Removed offers.length from dependencies
   useEffect(() => {
     if (!isAutoScrolling) return;
 
     const interval = setInterval(() => {
       setCurrentIndex(prev => {
-        // If we reach the end, go back to the beginning
-        if (prev >= offers.length - 3) {
-          return 0;
-        }
+        if (prev >= offers.length - 3) return 0;
         return prev + 1;
       });
-    }, 3000); // Change slide every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoScrolling, offers.length]);
+  }, [isAutoScrolling]);
 
   const scrollLeft = () => {
-    setIsAutoScrolling(false); // Stop auto-scroll when user interacts
+    setIsAutoScrolling(false);
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
     }
-    // Resume auto-scroll after 5 seconds of inactivity
     setTimeout(() => setIsAutoScrolling(true), 5000);
   };
 
   const scrollRight = () => {
-    setIsAutoScrolling(false); // Stop auto-scroll when user interacts
+    setIsAutoScrolling(false);
     if (currentIndex < offers.length - 3) {
       setCurrentIndex(prev => prev + 1);
     }
-    // Resume auto-scroll after 5 seconds of inactivity
     setTimeout(() => setIsAutoScrolling(true), 5000);
   };
 
   const handleOfferClick = (offer) => {
     setSelectedOffer(offer);
-    setIsAutoScrolling(false); // Pause auto-scroll when modal opens
+    setIsAutoScrolling(false);
   };
 
   const closeModal = () => {
     setSelectedOffer(null);
-    setIsAutoScrolling(true); // Resume auto-scroll when modal closes
-  };
-
-  // Pause auto-scroll on hover
-  const handleMouseEnter = () => {
-    setIsAutoScrolling(false);
-  };
-
-  const handleMouseLeave = () => {
     setIsAutoScrolling(true);
   };
+
+  const handleMouseEnter = () => setIsAutoScrolling(false);
+  const handleMouseLeave = () => setIsAutoScrolling(true);
 
   return (
     <>
@@ -180,8 +169,7 @@ export default function OfferCarousel() {
         >
           ›
         </button>
-        
-        {/* Auto-scroll indicator dots */}
+
         <div className="carousel-indicators">
           {offers.slice(0, offers.length - 2).map((_, index) => (
             <div
@@ -197,7 +185,6 @@ export default function OfferCarousel() {
         </div>
       </div>
 
-      {/* Modal */}
       {selectedOffer && (
         <div className="offer-modal-overlay" onClick={closeModal}>
           <div className="offer-modal" onClick={(e) => e.stopPropagation()}>
@@ -205,15 +192,15 @@ export default function OfferCarousel() {
               <h2>{selectedOffer.title}</h2>
               <button className="close-btn" onClick={closeModal}>×</button>
             </div>
-            
+
             <div className="offer-modal-content">
               <div className="offer-image-section">
                 <img src={selectedOffer.image} alt={selectedOffer.title} />
               </div>
-              
+
               <div className="offer-details-section">
                 <p className="offer-description">{selectedOffer.details.description}</p>
-                
+
                 <div className="offer-benefits">
                   <h3>Benefits:</h3>
                   <ul>
@@ -222,12 +209,12 @@ export default function OfferCarousel() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <div className="offer-terms">
                   <h3>Terms & Conditions:</h3>
                   <p>{selectedOffer.details.terms}</p>
                 </div>
-                
+
                 <div className="offer-validity">
                   <strong>Valid Until: {selectedOffer.details.validUntil}</strong>
                 </div>
